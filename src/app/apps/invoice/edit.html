@@ -1,0 +1,21 @@
+<div class="panel">
+    <h2 class="text-xl mb-4">{{ invoiceForm.value.invoiceNo ? 'Edit' : 'Add' }} Invoice</h2>
+    <form [formGroup]="invoiceForm" (ngSubmit)="saveChanges()">
+        <input formControlName="invoiceNo" class="form-input mb-3" placeholder="Invoice Number" />
+        <input formControlName="customer" class="form-input mb-3" placeholder="Customer Name" />
+        <input formControlName="date" type="date" class="form-input mb-3" />
+        <input formControlName="dueDate" type="date" class="form-input mb-3" />
+
+        <div formArrayName="items" *ngFor="let item of items.controls; let i=index">
+            <div [formGroupName]="i" class="grid grid-cols-3 gap-2 mb-2">
+                <input formControlName="description" class="form-input" placeholder="Description" />
+                <input formControlName="quantity" type="number" class="form-input" placeholder="Qty" />
+                <input formControlName="price" type="number" class="form-input" placeholder="Price" />
+                <button type="button" class="btn btn-sm btn-outline-danger" (click)="removeItem(i)">Remove</button>
+            </div>
+        </div>
+
+        <button type="button" class="btn btn-outline-primary mb-3" (click)="addItem()">Add Item</button>
+        <button type="submit" class="btn btn-primary">Save Invoice</button>
+    </form>
+</div>

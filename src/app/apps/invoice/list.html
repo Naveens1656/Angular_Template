@@ -1,0 +1,8 @@
+<div class="panel">
+    <h2 class="text-xl mb-4">Invoices</h2>
+    <input type="text" class="form-input mb-4" [(ngModel)]="search" placeholder="Search..." />
+    <div *ngFor="let invoice of invoices" class="border p-3 mb-2 flex justify-between">
+        <div>{{ invoice.invoiceNo }} - {{ invoice.customer }}</div>
+        <button class="btn btn-sm btn-outline-danger" (click)="deleteInvoice(invoice)">Delete</button>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="panel">
+    <h2 class="text-xl mb-4">To-Do List</h2>
+    <div class="mb-4 flex gap-2">
+        <input type="text" class="form-input flex-1" [(ngModel)]="newTask" placeholder="New task..." />
+        <button class="btn btn-primary" (click)="addTask()">Add</button>
+    </div>
+    <ul>
+        <li *ngFor="let task of tasks" class="flex justify-between border-b py-2">
+            <span>{{ task.name }}</span>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(task)">Delete</button>
+        </li>
+    </ul>
+</div>

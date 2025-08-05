@@ -1,0 +1,11 @@
+<div class="panel">
+    <h2 class="text-xl mb-4">Notes</h2>
+    <div class="mb-4 flex gap-2">
+        <input type="text" class="form-input flex-1" [(ngModel)]="newNote" placeholder="New note..." />
+        <button class="btn btn-primary" (click)="addNote()">Add</button>
+    </div>
+    <div *ngFor="let note of notes" class="p-4 border mb-2 flex justify-between">
+        <div>{{ note.text }}</div>
+        <button class="btn btn-sm btn-outline-danger" (click)="deleteNote(note)">Delete</button>
+    </div>
+</div>
