@@ -522,11 +522,7 @@ export class RangeSearchDatatableComponent {
         },
     ];
 
-<<<<<<< HEAD
    rows: any[] = [];
-=======
-    rows = this.allRows;
->>>>>>> e5bc932d62745620924234ff6e796b19f5d0b613
 
     rangeChange() {
         let dt = this.allRows;
@@ -548,8 +544,4 @@ export class RangeSearchDatatableComponent {
         }
         return '';
     }
-<<<<<<< HEAD
 }
-=======
-}
->>>>>>> e5bc932d62745620924234ff6e796b19f5d0b613
