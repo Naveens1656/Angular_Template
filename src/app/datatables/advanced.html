@@ -1,0 +1,88 @@
+<div>
+    <div class="panel flex items-center overflow-x-auto whitespace-nowrap p-3 text-primary">
+        <div class="rounded-full bg-primary p-1.5 text-white ring-2 ring-primary/30 ltr:mr-3 rtl:ml-3">
+            <!-- Removed dummy icon component -->
+        </div>
+        <span class="ltr:mr-3 rtl:ml-3">Documentation: </span>
+        <a href="https://www.npmjs.com/package/@bhplugin/ng-datatable" target="_blank" class="block hover:underline">
+            https://www.npmjs.com/package/@bhplugin/ng-datatable
+        </a>
+    </div>
+
+    <div class="panel mt-6 pb-0">
+        <h5 class="mb-5 text-lg font-semibold dark:text-white-light">Advanced</h5>
+        <div class="datatable">
+            <ng-datatable
+                [rows]="rows"
+                [columns]="cols"
+                [sortable]="true"
+                [loading]="loading"
+                skin="whitespace-nowrap bh-table-hover"
+                firstArrow='<svg>...</svg>'
+                lastArrow='<svg>...</svg>'
+                previousArrow='<svg>...</svg>'
+                nextArrow='<svg>...</svg>'
+            >
+                <!-- Only show dynamic values without dummy data -->
+
+                <ng-template slot="id" let-value="data">
+                    <strong class="text-info">#{{ value.id }}</strong>
+                </ng-template>
+
+                <ng-template slot="firstName" let-value="data">
+                    <div class="flex items-center gap-2">
+                        <img [src]="value.profileImageUrl" class="h-9 w-9 max-w-none rounded-full" alt="user-profile" />
+                        <div class="font-semibold">{{ value.firstName + ' ' + value.lastName }}</div>
+                    </div>
+                </ng-template>
+
+                <ng-template slot="country" let-value="data">
+                    <div class="flex items-center gap-2">
+                        <img width="24" [src]="value.flagUrl" class="max-w-none" alt="country-flag" />
+                        <div>{{ value.country }}</div>
+                    </div>
+                </ng-template>
+
+                <ng-template slot="email" let-value="data">
+                    <a [href]="'mailto:' + value.email" class="text-primary hover:underline">{{ value.email }}</a>
+                </ng-template>
+
+                <ng-template slot="age" let-value="data">
+                    <div class="flex h-2.5 w-4/5 min-w-[100px] rounded-full bg-[#ebedf2] dark:bg-dark/40">
+                        <div
+                            class="h-2.5 rounded-full rounded-bl-full text-center text-xs text-white"
+                            [ngClass]="'bg-' + value.statusColor"
+                            [ngStyle]="{width: value.age + '%'}"
+                        ></div>
+                    </div>
+                </ng-template>
+
+                <ng-template slot="rating" let-value="data">
+                    <div class="flex items-center justify-center text-warning">
+                        <div *ngFor="let i of getStarArray(value.rating)">
+                            <svg class="h-5 w-5 fill-warning" viewBox="0 0 24 24">...</svg>
+                        </div>
+                    </div>
+                </ng-template>
+
+                <ng-template slot="series" let-value="data">
+                    <div style="width: 150px" class="overflow-hidden">
+                        <apx-chart
+                            [series]="value.chartSeries"
+                            [chart]="value.chartOptions.chart"
+                            [stroke]="value.chartOptions.stroke"
+                            [markers]="value.chartOptions.markers"
+                            [colors]="value.chartOptions.colors"
+                            [grid]="value.chartOptions.grid"
+                            [tooltip]="value.chartOptions.tooltip"
+                        ></apx-chart>
+                    </div>
+                </ng-template>
+
+                <ng-template slot="status" let-value="data">
+                    <span class="badge" [ngClass]="'badge-outline-' + value.statusColor">{{ value.status }}</span>
+                </ng-template>
+            </ng-datatable>
+        </div>
+    </div>
+</div>

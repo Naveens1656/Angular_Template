@@ -1,0 +1,14 @@
+<div class="panel">
+    <h2 class="mb-4 text-xl">Mailbox</h2>
+    <div>
+        <input type="text" class="form-input mb-4" [(ngModel)]="filter" placeholder="Search mail..." />
+        <ul>
+            <li *ngFor="let mail of mailboxList" class="mb-2 border-b pb-2">
+                <div class="flex justify-between">
+                    <div (click)="viewMail(mail)" class="cursor-pointer">{{ mail.subject }}</div>
+                    <button class="btn btn-sm btn-outline-danger" (click)="deleteMail(mail)">Delete</button>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>

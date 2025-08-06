@@ -1,0 +1,10 @@
+<div class="panel grid grid-cols-1 sm:grid-cols-3 gap-4">
+    <div *ngFor="let board of boards" class="border p-4 bg-white dark:bg-gray-800">
+        <h3 class="font-semibold mb-2">{{ board.name }}</h3>
+        <div *ngFor="let task of board.tasks" class="flex justify-between border-b py-1">
+            <span>{{ task.name }}</span>
+            <button class="btn btn-sm btn-outline-danger" (click)="deleteTask(board, task)">×</button>
+        </div>
+        <input type="text" #taskInput class="form-input mt-3" placeholder="New task" (keyup.enter)="addTask(board, taskInput.value); taskInput.value=''" />
+    </div>
+</div>
