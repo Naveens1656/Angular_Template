@@ -1,40 +1,23 @@
-// src/app/pages/login/login.component.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common'; // ✅ for *ngIf, *ngFor, etc.
-import { FormsModule } from '@angular/forms';   // ✅ for [(ngModel)]
-import { RouterModule } from '@angular/router'; // ✅ if you use routerLink
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
-  standalone: true,
-  imports: [
-    CommonModule,
-    FormsModule,
-    RouterModule
-  ],
   templateUrl: './login.component.html',
-  styleUrls: ['./login.component.scss']
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
-  username = '';
-  password = '';
-  errorMessage = '';
+  username: string = '';
+  password: string = '';
+  errorMessage: string = '';
 
-  constructor() {}
+  constructor(private router: Router) {}
 
   login() {
-    this.errorMessage = '';
-
-    if (!this.username || !this.password) {
-      this.errorMessage = 'Please fill in both username and password';
-      return;
-    }
-
-    // Example login logic
-    if (this.username !== 'admin' || this.password !== 'admin') {
-      this.errorMessage = 'Invalid credentials';
+    if (this.username === 'admin' && this.password === 'admin') {
+      this.router.navigate(['/home']);
     } else {
-      // TODO: handle successful login (e.g., navigate to dashboard)
+      this.errorMessage = 'Invalid username or password';
     }
   }
 }
