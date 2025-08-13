@@ -1,0 +1,50 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f9f4ee;
+  padding: 10px 20px;
+  font-family: Arial, sans-serif;
+  font-size: 14px;
+  border-bottom: 1px solid #ccc;
+}
+
+.header .logo {
+  height: 40px;
+}
+
+.logout-btn {
+  background: red;
+  color: white;
+  border: none;
+  border-radius: 50%;
+  font-size: 20px;
+  padding: 5px 10px;
+  cursor: pointer;
+}
+
+.logout-btn:hover {
+  background: darkred;
+}
+
+.navbar {
+  display: flex;
+  background: linear-gradient(#d7ecf8, #a0c4e3);
+  padding: 5px 20px;
+}
+
+.navbar a {
+  margin-right: 20px;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.navbar a:hover {
+  color: #2980b9;
+}
+
+.content {
+  height: calc(100vh - 100px);
+  background: linear-gradient(#4facfe, #00f2fe);
+}
